@@ -948,4 +948,34 @@ show(p)
 
 ![image-20201027165902994](Bokeh：布局、交互和标注.assets/image-20201027165902994.png)
 
-![image-20201027172731276](Bokeh：布局、交互和标注.assets/image-20201027172731276.png)
+创建图例并进行设置
+
+```python
+from bokeh.io import output_notebook, show
+from bokeh.plotting import figure
+import numpy as np
+
+x = np.arange(-1, 1, 0.1)
+
+y1 = np.exp(x)
+y2 = np.exp(2 * x)
+
+p = figure(plot_width=600, plot_height=400)
+
+# 画第一张图，并添加图例
+p.circle(x, y1, size=10, color='lightblue', legend_label='exp(x)')
+
+# 画第二张图，并添加图例
+p.circle(x, y2, size=10, color='pink',  legend_label='exp(2 * x)')
+
+# 将图例放在左上角 (top_left) :p.legend.location
+p.legend.location = 'top_left'
+
+# 将图例背景填充为浅灰色 (lightgray):p.legend.background_fill_color
+p.legend.background_fill_color = 'lightgray'
+
+output_notebook()
+show(p)
+```
+
+![image-20201028102225616](Bokeh：布局、交互和标注.assets/image-20201028102225616.png)
